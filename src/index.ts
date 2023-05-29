@@ -10,8 +10,6 @@ import IUser from './bot/models/IUser';
 import greeting from './greeting';
 import IOrder from './bot/models/IOrder'
 import OrderModel from './bot/models/OrderModel'
-
-(async () => await set_webhook())();
 const handler = new Composer<proforiContext>();
 const home = new Scenes.WizardScene("home", handler, async (ctx) => await orders_handler(ctx));
 
