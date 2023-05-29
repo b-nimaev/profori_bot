@@ -22,13 +22,12 @@ app.get('/success', async (req, res) => {
     console.log(billId)
 })
 
-app.post('/neworder', async (req, res) => {
+app.post('/bot/neworder', async (req, res) => {
     let chatid: string | undefined = process.env.chatid
     let { phone, ref, name } = req.body
     let message = `${phone} ${ref} ${name}`
 
     chatid ? await bot.telegram.sendMessage(chatid, message) : console.log('chat id not found')
-
 })
 
 app.get('/payment/success', async (req, res) => {
