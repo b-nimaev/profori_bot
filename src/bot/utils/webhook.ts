@@ -4,7 +4,7 @@ import { bot } from "../..";
 export default async function set_webhook() {
     if (process.env.MODE === 'production') {
         bot.telegram.setWebhook(
-            `${process.env.WEBHOOK_URL}/bot${process.env.secret_path}`
+            `https://profori.pro/bot`
         ).then(() => {
             console.log('webhook setted')
         });
