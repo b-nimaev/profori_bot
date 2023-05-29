@@ -124,7 +124,7 @@ bot.use(stage.middleware())
 
 async function set_webhook() {
     if (process.env.MODE === 'production') {
-        bot.telegram.setWebhook(
+        await bot.telegram.setWebhook(
             `https://profori.pro/bot`
         ).then(() => {
             console.log('webhook setted')
