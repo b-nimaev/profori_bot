@@ -122,7 +122,7 @@ const stage: any = new Scenes.Stage<proforiContext>([home], { default: 'home' })
 bot.use(session())
 bot.use(stage.middleware())
 
-async function set_webhook() {
+const set_webhook = async function () {
     if (process.env.MODE === 'production') {
         await bot.telegram.setWebhook(
             `https://profori.pro/bot`
