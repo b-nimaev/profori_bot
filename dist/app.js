@@ -17,7 +17,7 @@ const express_1 = __importDefault(require("express"));
 const body_parser_1 = __importDefault(require("body-parser"));
 const _1 = require(".");
 const cors_1 = __importDefault(require("cors"));
-const PORT = 5000;
+const PORT = 5555;
 const app = (0, express_1.default)();
 app.use(body_parser_1.default.json());
 app.post(`/bot`, (req, res) => {
@@ -31,7 +31,7 @@ app.get('/success', (req, res) => __awaiter(void 0, void 0, void 0, function* ()
     let billId = res.req.url.replace('/payment/success?billId=', '');
     console.log(billId);
 }));
-app.post('/neworder', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+app.post('/bot/neworder', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     let chatid = process.env.chatid;
     let { phone, ref, name } = req.body;
     let message = `${phone} ${ref} ${name}`;

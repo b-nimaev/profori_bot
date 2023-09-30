@@ -1,41 +1,10 @@
 import { Document, ObjectId } from "mongoose";
+import { User } from "telegraf/typings/core/types/typegram";
 
-interface User extends Document {
-    firstName: string;
-    lastName: string;
-    surName: string;
-    gender: {
-        name: string,
-        value: string
-    };
-    role: '',
-    dateOfBirth: string;
-    photo: string;
-    subscriptionStatus: string;
-    nickname: string;
-    email: string;
-    emailVerified: boolean;
-    password: string;
-    colorScheme: {
-        name: string,
-        value: string
-    };
-    experience: [{
-        experience: string,
-        year: string,
-        year_end: string,
-        position: string
-    }];
-    city: {
-        nameEn: string,
-        nameRu: string
-    };
-    ref: string,
-    telegram_id?: number,
-    ref_links: {
-        value: string,
-        users: ObjectId[]
-    }[]
+interface IUser extends User {
+    _id?: ObjectId,
+    is_admin?: Boolean,
+    buyed?: ObjectId[]
 }
 
-export default User;
+export default IUser;

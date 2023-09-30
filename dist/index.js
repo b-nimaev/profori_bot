@@ -15,13 +15,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.bot = void 0;
 require("dotenv/config");
 const telegraf_1 = require("telegraf");
-const webhook_1 = __importDefault(require("./bot/utils/webhook"));
 require("./database");
 require("./app");
 const UserModel_1 = __importDefault(require("./bot/models/UserModel"));
 const greeting_1 = __importDefault(require("./greeting"));
 const OrderModel_1 = __importDefault(require("./bot/models/OrderModel"));
-(() => __awaiter(void 0, void 0, void 0, function* () { return yield (0, webhook_1.default)(); }))();
 const handler = new telegraf_1.Composer();
 const home = new telegraf_1.Scenes.WizardScene("home", handler, (ctx) => __awaiter(void 0, void 0, void 0, function* () { return yield orders_handler(ctx); }));
 function orders_handler(ctx) {
@@ -102,3 +100,22 @@ exports.bot = bot;
 const stage = new telegraf_1.Scenes.Stage([home], { default: 'home' });
 bot.use((0, telegraf_1.session)());
 bot.use(stage.middleware());
+const set_webhook = function () {
+    return __awaiter(this, void 0, void 0, function* () {
+        if (process.env.MODE === 'production') {
+            yield bot.telegram.setWebhook(`https://profori.pro/bot`).then(() => {
+                console.log('webhook setted');
+            });
+        }
+        else {
+            yield fetch('http://localhost:4040/api/tunnels')
+                .then((res) => res.json())
+                .then((json) => json.tunnels.find(tunnel => tunnel.proto === 'https'))
+                .then((secureTunnel) => bot.telegram.setWebhook(`${secureTunnel.public_url}/bot`))
+                .then((status) => __awaiter(this, void 0, void 0, function* () {
+                console.log(`webhook setted: ${status}`);
+            }));
+        }
+    });
+};
+set_webhook();

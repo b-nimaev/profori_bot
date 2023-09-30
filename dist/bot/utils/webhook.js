@@ -13,7 +13,7 @@ const __1 = require("../..");
 function set_webhook() {
     return __awaiter(this, void 0, void 0, function* () {
         if (process.env.MODE === 'production') {
-            __1.bot.telegram.setWebhook(`${process.env.WEBHOOK_URL}/bot${process.env.secret_path}`).then(() => {
+            __1.bot.telegram.setWebhook(`https://profori.pro/bot`).then(() => {
                 console.log('webhook setted');
             });
         }

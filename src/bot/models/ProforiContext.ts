@@ -2,7 +2,9 @@ import { ObjectId } from "mongoose";
 import { Context, Scenes } from "telegraf";
 
 interface proforiWizardSession extends Scenes.WizardSessionData {
-
+    cost: any,
+    positionName: any,
+    positions: any
 }
 
 interface proforiSession extends Scenes.WizardSession<proforiWizardSession> {
