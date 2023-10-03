@@ -468,7 +468,7 @@ bot.use(stage.middleware())
 const set_webhook = async function () {
     if (process.env.MODE === 'production') {
         await bot.telegram.setWebhook(
-            `https://profori.pro/bot`
+            `https://appstorekartabot.ru/bot`
         ).then(() => {
             console.log('webhook setted')
         });

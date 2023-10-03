@@ -16,16 +16,60 @@ export default async function greeting(ctx: proforiContext) {
                 inline_keyboard: [
                     [
                         {
-                            text: 'Выбрать товар',
-                            callback_data: 'choose_position'
+                            text: '500 ₽',
+                            callback_data: 'price 500'
+                        },
+                        {
+                            text: '1000 ₽',
+                            callback_data: 'price 1000'
+                        },
+                        {
+                            text: '1500 ₽',
+                            callback_data: 'price 1500'
                         },
                     ],
                     [
                         {
-                            text: 'Мои товары',
-                            callback_data: 'my_positions'
-                        }
-                    ]
+                            text: '2000 ₽',
+                            callback_data: 'price 2000'
+                        },
+                        {
+                            text: '2500 ₽',
+                            callback_data: 'price 2500'
+                        },
+                        {
+                            text: '3000 ₽',
+                            callback_data: 'price 3000'
+                        },
+                    ],
+                    [
+                        {
+                            text: '3500 ₽',
+                            callback_data: 'price 3500'
+                        },
+                        {
+                            text: '4000 ₽',
+                            callback_data: 'price 4000'
+                        },
+                        {
+                            text: '5000 ₽',
+                            callback_data: 'price 5000'
+                        },
+                    ],
+                    [
+                        {
+                            text: '7000 ₽',
+                            callback_data: 'price 7000'
+                        },
+                        {
+                            text: '8500 ₽',
+                            callback_data: 'price 8500'
+                        },
+                        {
+                            text: '10000 ₽',
+                            callback_data: 'price 10000'
+                        },
+                    ],
                 ]
             }
         }
@@ -58,7 +102,7 @@ export default async function greeting(ctx: proforiContext) {
 
                 if (ctx.from) {
 
-                    const new_user: IUser = ctx.from
+                    const new_user: IUser = /*
 
                     await new UserModel(new_user).save()
 
